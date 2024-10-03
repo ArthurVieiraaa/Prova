@@ -2,29 +2,27 @@ import java.util.ArrayList;
 
 public class Curso {
     int idCurso;
-    String NomeCurso;
-    int CargaHoraria;
+    String nomeCurso;
+    int cargaHoraria;
     int idProfessor;
 
     Professor professor;
     static ArrayList<Curso> cursos = new ArrayList<>();
 
-    public Curso(int idCurso, String NomeCurso, int CargaHoraria, int idProfessor) {
+    public Curso(int idCurso, String nomeCurso, int cargaHoraria, Professor professor) {
         this.idCurso = idCurso;
-        this.NomeCurso = NomeCurso;
-        this.CargaHoraria = CargaHoraria;
-        this.idProfessor = idProfessor;
-
-        this.professor = Professor.buscaProfessor(idProfessor);
+        this.nomeCurso = nomeCurso;
+        this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
 
         cursos.add(this);
     }
 
-    public Curso(int idCurso, String NomeCurso, int CargaHoraria, Professor professor) {
+    public Curso(int idCurso, String nomeCurso, int cargaHoraria, int idProfessor) {
         this.idCurso = idCurso;
-        this.NomeCurso = NomeCurso;
-        this.CargaHoraria = CargaHoraria;
-        this.professor = professor;
+        this.nomeCurso = nomeCurso;
+        this.cargaHoraria = cargaHoraria;
+        this.idProfessor = idProfessor;
 
         cursos.add(this);
     }
@@ -35,7 +33,7 @@ public class Curso {
                 return;
             }
         }
-        throw new Exception("Curso não encontrada");
+        throw new Exception("Curso não encontrado");
     }
 
     static Curso buscaCurso(int idCurso) {
@@ -47,4 +45,23 @@ public class Curso {
         return null;
     }
 
+    static int contarAlunosPorCurso(int idCurso) {
+        int cont = 0;
+        for (Aluno aluno : Aluno.alunos) {
+            if (aluno.idCurso == idCurso) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    static String professoresCurso(int idCurso) {
+        String professores = "";
+        for (Professor professor : Professor.professores) {
+            if (professor.idCurso == idCurso) {
+                professores += professor.nomeProfessor + "\n";
+            }
+        }
+        return professores;
+    }
 }

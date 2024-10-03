@@ -2,29 +2,38 @@ import java.util.ArrayList;
 
 public class Professor {
     int idProfessor;
-    String NomeProfessor;
-    String Departamento;
+    String nomeProfessor;
+    String departamento;
     int idCurso;
 
     Curso curso;
     static ArrayList<Professor> professores = new ArrayList<>();
 
-    public Professor(int idProfessor, String NomeProfessor, String Departamento, int idCurso) {
+    public Professor(int idProfessor, String nomeProfessor, String departamento, Curso curso) {
         this.idProfessor = idProfessor;
-        this.NomeProfessor = NomeProfessor;
-        this.Departamento = Departamento;
+        this.nomeProfessor = nomeProfessor;
+        this.departamento = departamento;
+        this.curso = curso;
 
-        this.curso = Curso.buscaCurso(idCurso);
         professores.add(this);
     }
 
+    public Professor(int idProfessor, String nomeProfessor, String departamento, int idCurso) {
+        this.idProfessor = idProfessor;
+        this.nomeProfessor = nomeProfessor;
+        this.departamento = departamento;
+        this.idCurso = idCurso;
+
+        professores.add(this);
+    }
+    
     static void verificaId(int idProfessor) throws Exception {
         for (Professor professor : professores) {
             if (professor.idProfessor == idProfessor) {
                 return;
             }
         }
-        throw new Exception("Professor não encontrada");
+        throw new Exception("Professor não encontrado");
     }
 
     static Professor buscaProfessor(int idProfessor) {
@@ -34,5 +43,15 @@ public class Professor {
             }
         }
         return null;
+    }
+
+    static String cursosLecionados(int idProfessor) {
+        String cursos = "";
+        for (Curso curso : Curso.cursos) {
+            if (curso.idProfessor == idProfessor) {
+                cursos += curso.nomeCurso + "\n";
+            }
+        }
+        return cursos;
     }
 }

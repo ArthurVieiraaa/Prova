@@ -82,7 +82,8 @@ public class Sistema {
                         return;
                     }
                     for (Professor professor : Professor.professores) {
-                        System.out.println("- ID: " + professor.idProfessor + " - Nome: " + professor.NomeProfessor + " - Departamento: " + professor.Departamento + "\n Cursos: " + professor.curso.NomeCurso);
+                        System.out.println("- ID: " + professor.idProfessor + " - Nome: " + professor.nomeProfessor + " - Departamento: " + professor.departamento);
+                        System.out.println("- Cursos: " + Professor.cursosLecionados(professor.idProfessor) + "- Alunos: " + Curso.contarAlunosPorCurso(professor.idProfessor));
                     }
                     break;
                 case 5:
@@ -92,7 +93,8 @@ public class Sistema {
                         return;
                     }
                     for (Curso curso : Curso.cursos) {
-                        System.out.println("- ID: " + curso.idCurso + " - Nome: " + curso.NomeCurso + " - Carga Horária: " + curso.CargaHoraria + " - Professor: " + curso.professor.NomeProfessor);
+                        System.out.println("- ID: " + curso.idCurso + " - Nome: " + curso.nomeCurso + " - Carga Horária: " + curso.cargaHoraria);
+                        System.out.println("- Professor: " + Curso.professoresCurso(curso.idProfessor) + "- Alunos: " + Curso.contarAlunosPorCurso(curso.idCurso));
                     }
                     break;
                 case 6:
@@ -102,7 +104,8 @@ public class Sistema {
                         return;
                     }
                     for (Aluno aluno : Aluno.alunos) {
-                        System.out.println("- ID: " + aluno.idAluno + " - Nome: " + aluno.NomeAluno + " - Data de Nascimento: " + aluno.DataNascimento + " - CPF: " + aluno.cpf + " - Curso: " + aluno.curso.NomeCurso);
+                        System.out.println("- ID: " + aluno.idAluno + " - Nome: " + aluno.nomeAluno + " - Data de Nascimento: " + aluno.dataNascimento + " - CPF: " + aluno.cpf);
+                        System.out.println("- Curso: " + Curso.buscaCurso(aluno.idCurso).nomeCurso);
                     }
                     break;
                 case 7:
