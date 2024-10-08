@@ -45,6 +45,15 @@ public class Curso {
         return null;
     }
 
+    static Curso buscaProfessor(int idCurso) {
+        for (Curso curso : cursos) {
+            if (curso.idCurso == idCurso) {
+                return curso;
+            }
+        }
+        return null;
+    }
+
     static int contarAlunosPorCurso(int idCurso) {
         int cont = 0;
         for (Aluno aluno : Aluno.alunos) {
@@ -53,15 +62,5 @@ public class Curso {
             }
         }
         return cont;
-    }
-
-    static String professoresCurso(int idCurso) {
-        String professores = "";
-        for (Professor professor : Professor.professores) {
-            if (professor.idCurso == idCurso) {
-                professores += professor.nomeProfessor + "\n";
-            }
-        }
-        return professores;
     }
 }

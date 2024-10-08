@@ -83,7 +83,7 @@ public class Sistema {
                     }
                     for (Professor professor : Professor.professores) {
                         System.out.println("- ID: " + professor.idProfessor + " - Nome: " + professor.nomeProfessor + " - Departamento: " + professor.departamento);
-                        System.out.println("- Cursos: " + Professor.cursosLecionados(professor.idProfessor) + "- Alunos: " + Curso.contarAlunosPorCurso(professor.idProfessor));
+                        System.out.println("- Cursos: " + Professor.cursoProfessores(professor.idProfessor) + " - Alunos: " + Curso.contarAlunosPorCurso(professor.idProfessor));
                     }
                     break;
                 case 5:
@@ -94,7 +94,7 @@ public class Sistema {
                     }
                     for (Curso curso : Curso.cursos) {
                         System.out.println("- ID: " + curso.idCurso + " - Nome: " + curso.nomeCurso + " - Carga Horária: " + curso.cargaHoraria);
-                        System.out.println("- Professor: " + Curso.professoresCurso(curso.idProfessor) + "- Alunos: " + Curso.contarAlunosPorCurso(curso.idCurso));
+                        System.out.println("- Professor: " + Professor.buscaProfessor(curso.idProfessor).nomeProfessor + " - Alunos: " + Curso.contarAlunosPorCurso(curso.idCurso));
                     }
                     break;
                 case 6:
